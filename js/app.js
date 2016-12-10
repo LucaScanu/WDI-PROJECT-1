@@ -29,11 +29,45 @@ COMPLICATIONS:
 -add a counter to keep track of best times, how many games won and how many games lost.
 -finally style the page
 
-
-
-
-
-
-
-
 */
+
+// create a Game object
+
+var Game = Game || {};
+
+Game.boardBase = 6;
+Game.cards = [];
+Game.board;
+
+for (var i = 1; i < 19; i++) {
+  Game.cards.push(i);
+  Game.cards.push(i);
+}
+
+// console.log(Game.cards);
+// create gameboard with jquery
+
+Game.createBoard = function() {
+  var $body = $('body');
+  var $board = $(document.createElement('div')).addClass('board');
+  $body.append($board);
+  Game.createCards($board);
+};
+
+// create the card(div) elements and two div for the card front and back
+// append the cards to the board
+Game.createCards = function($board) {
+  $(Game.cards).each(function(index) {
+    var $front = $(document.createElement('div')).addClass('front');
+    var $back = $(document.createElement('div')).addClass('back');
+    var $card = $(document.createElement('div')).append($front, $back);
+    $board.append($card);
+  });
+};
+
+
+$(start);
+
+function start() {
+  Game.createBoard();
+}
