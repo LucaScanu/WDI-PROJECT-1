@@ -10,8 +10,9 @@
 -BASIC GAME:
 -create a 6 x 6 grid to display the game board.
 -each cell of the grid corresponds to one of cards face down.
--create the cards to be used in the game
--shuffle the cards randomly into the game board
+-create an array of images
+-assign a pair of each picture to the cards array for a total of 36 pictures
+-assign each picture randomly to each square of the game board
 -the user should be able to click on only two different cards each play.
 -the cards should flip on click.
 -the cards with the same picture are 'paired' and should disappear from the board
@@ -39,10 +40,7 @@ Game.boardBase = 6;
 Game.cards = [];
 Game.board;
 
-// for (var i = 1; i < 19; i++) {
-//   Game.cards.push(i);
-//   Game.cards.push(i);
-// }
+// created an array of 18 images
 
 var deck = [
   'images/Bart1.jpeg',
@@ -65,20 +63,24 @@ var deck = [
   'images/Stewie2.jpeg'
 ];
 
+// this for loop will push twice the cards in our deck into the Game.cards array
+
 for (var i = 1; i < 19; i++) {
   var randomCards = Math.floor(Math.random(deck.length));
   var playCards = deck[randomCards];
-  Game.cards.push(i);
-  Game.cards.push(i);
+  Game.cards.push(playCards);
+  Game.cards.push(playCards);
   deck.splice(randomCards, 1);
 }
+// The sort function will sort the cards randomly
 
 Game.cards.sort(function() {
   return 0.5 - Math.random();
 });
 
+// Game.assignCards
+
 console.log(Game.cards);
-// console.log(Game.cards);
 // create gameboard with jquery
 
 Game.createBoard = function() {
@@ -94,13 +96,19 @@ Game.createCards = function($board) {
   $(Game.cards).each(function(index) {
     var $front = $(document.createElement('div')).addClass('front');
     var $back = $(document.createElement('div')).addClass('back');
-    var $card = $(document.createElement('div')).append($front, $back);
+    var $card = $(document.createElement('div')).addClass('square');
+    $('.square').append($front, $back);
     $board.append($card);
   });
 };
 
-$(start);
+$('.back').flip({
+  axis: 'y',
+  trigger: 'click'
+});
 
+$(start);
+//
 function start() {
   Game.createBoard();
 }
