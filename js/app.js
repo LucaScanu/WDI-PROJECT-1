@@ -39,11 +39,45 @@ Game.boardBase = 6;
 Game.cards = [];
 Game.board;
 
+// for (var i = 1; i < 19; i++) {
+//   Game.cards.push(i);
+//   Game.cards.push(i);
+// }
+
+var deck = [
+  'images/Bart1.jpeg',
+  'images/Bart2.jpeg',
+  'images/Brian1.jpeg',
+  'images/Brian2.jpeg',
+  'images/Cleveland.jpeg',
+  'images/Fredflinstone.jpeg',
+  'images/Homer2.jpeg',
+  'images/Homers1.jpeg',
+  'images/PeterG.jpeg',
+  'images/PeterG2.jpeg',
+  'images/Popeye.jpeg',
+  'images/Quagmire3.jpeg',
+  'images/Quagmire4.jpeg',
+  'images/Roger1.jpeg',
+  'images/Roger2.jpeg',
+  'images/Rollo.jpeg',
+  'images/Stewie.jpeg',
+  'images/Stewie2.jpeg'
+];
+
 for (var i = 1; i < 19; i++) {
+  var randomCards = Math.floor(Math.random(deck.length));
+  var playCards = deck[randomCards];
   Game.cards.push(i);
   Game.cards.push(i);
+  deck.splice(randomCards, 1);
 }
 
+Game.cards.sort(function() {
+  return 0.5 - Math.random();
+});
+
+console.log(Game.cards);
 // console.log(Game.cards);
 // create gameboard with jquery
 
@@ -64,7 +98,6 @@ Game.createCards = function($board) {
     $board.append($card);
   });
 };
-
 
 $(start);
 
