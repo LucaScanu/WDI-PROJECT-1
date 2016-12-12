@@ -44,24 +44,24 @@ Game.square;
 // created an array of 18 images
 
 var deck = [
-  'images/Bart1.jpeg',
-  'images/Bart2.jpeg',
-  'images/Brian1.jpeg',
-  'images/Brian2.jpeg',
-  'images/Cleveland.jpeg',
-  'images/Fredflinstone.jpeg',
-  'images/Homer2.jpeg',
-  'images/Homers1.jpeg',
-  'images/PeterG.jpeg',
-  'images/PeterG2.jpeg',
-  'images/Popeye.jpeg',
-  'images/Quagmire3.jpeg',
-  'images/Quagmire4.jpeg',
-  'images/Roger1.jpeg',
-  'images/Roger2.jpeg',
-  'images/Rollo.jpeg',
-  'images/Stewie.jpeg',
-  'images/Stewie2.jpeg'
+  '/images/Bart1.jpeg',
+  '/images/Bart2.jpeg',
+  '/images/Brian1.jpeg',
+  '/images/Brian2.jpeg',
+  '/images/Cleveland.jpeg',
+  '/images/Fredflinstone.jpeg',
+  '/images/Homer2.jpeg',
+  '/images/Homers1.jpeg',
+  '/images/PeterG.jpeg',
+  '/images/PeterG2.jpeg',
+  '/images/Popeye.jpeg',
+  '/images/Quagmire3.jpeg',
+  '/images/Quagmire4.jpeg',
+  '/images/Roger1.jpeg',
+  '/images/Roger2.jpeg',
+  '/images/Rollo.jpeg',
+  '/images/Stewie.jpeg',
+  '/images/Stewie2.jpeg'
 ];
 
 // this for loop will push twice the cards in our deck into the Game.cards array
@@ -80,7 +80,9 @@ Game.cards.sort(function() {
 });
 
 
+
 console.log(Game.cards);
+
 // create gameboard with jquery
 
 Game.createBoard = function() {
@@ -90,23 +92,18 @@ Game.createBoard = function() {
   Game.createSquare($board);
 };
 
-// create the square(div) elements and append it to the board
+// create the card(div) elements and two div for the card front and back
+// append the cards to the board
 Game.createSquare = function($board) {
   $(Game.cards).each(function(index) {
-    var $square = $(document.createElement('div')).addClass('square');
-    $board.append($square);
+    $board.append('<div class="square"><div class="front"></div><div class="back"></div></div>');
   });
-  // Call the createCards function
-  Game.createCards();
+  this.addCardValues();
 };
-// Create two divs for the card front and back
-// append the cards to each square
 
-Game.createCards = function($square) {
-  $(Game.square).each(function(index) {
-    var $front = $(document.createElement('div')).addClass('front');
-    var $back = $(document.createElement('div')).addClass('back');
-    $square.append($front, $back);
+Game.addCardValues = function() {
+  $('.square').each(function(index, element) {
+    $(element).find('.back').append('<img src=".' + Game.cards[index] + '">');
   });
 };
 
