@@ -13,6 +13,9 @@
 -create an array of images
 -assign a pair of each picture to the cards array for a total of 36 pictures
 -assign each picture randomly to each square of the game board
+- win logic: if the players clicks and pairs two equal images alert player
+- alert('pair matched')
+- if the players clicks on two different images alert message ('no match')
 -the user should be able to click on only two different cards each play.
 -the cards should flip on click.
 -the cards with the same picture are 'paired' and should disappear from the board
@@ -81,7 +84,7 @@ Game.cards.sort(function() {
 
 
 
-console.log(Game.cards);
+// console.log(Game.cards);
 
 // create gameboard with jquery
 
@@ -89,13 +92,13 @@ Game.createBoard = function() {
   var $body = $('body');
   var $board = $(document.createElement('div')).addClass('board');
   $body.append($board);
-  Game.createSquare($board);
+  this.createSquare($board);
 };
 
 // create the card(div) elements and two div for the card front and back
 // append the cards to the board
 Game.createSquare = function($board) {
-  $(Game.cards).each(function(index) {
+  $(Game.cards).each(function(index, element) {
     $board.append('<div class="square"><div class="front"></div><div class="back"></div></div>');
   });
   this.addCardValues();
@@ -104,11 +107,19 @@ Game.createSquare = function($board) {
 Game.addCardValues = function() {
   $('.square').each(function(index, element) {
     $(element).find('.back').append('<img src=".' + Game.cards[index] + '">');
+    // console.log(Game.cards[index]);
+  });
+  this.checkForWin();
+};
+
+Game.checkForWin = function() {
+  $('.back').on('click', function() {
+    console.log('clicked');
   });
 };
 
 $(start);
-//
+
 function start() {
   Game.createBoard();
 }
