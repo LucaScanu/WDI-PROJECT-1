@@ -39,6 +39,7 @@ var Game = Game || {};
 Game.boardBase = 6;
 Game.cards = [];
 Game.board;
+Game.square;
 
 // created an array of 18 images
 
@@ -72,13 +73,12 @@ for (var i = 1; i < 19; i++) {
   Game.cards.push(playCards);
   deck.splice(randomCards, 1);
 }
-// The sort function will sort the cards randomly
+// This sort function will sort the cards randomly
 
 Game.cards.sort(function() {
   return 0.5 - Math.random();
 });
 
-// Game.assignCards
 
 console.log(Game.cards);
 // create gameboard with jquery
@@ -87,25 +87,28 @@ Game.createBoard = function() {
   var $body = $('body');
   var $board = $(document.createElement('div')).addClass('board');
   $body.append($board);
-  Game.createCards($board);
+  Game.createSquare($board);
 };
 
-// create the card(div) elements and two div for the card front and back
-// append the cards to the board
-Game.createCards = function($board) {
+// create the square(div) elements and append it to the board
+Game.createSquare = function($board) {
   $(Game.cards).each(function(index) {
+    var $square = $(document.createElement('div')).addClass('square');
+    $board.append($square);
+  });
+  // Call the createCards function
+  Game.createCards();
+};
+// Create two divs for the card front and back
+// append the cards to each square
+
+Game.createCards = function($square) {
+  $(Game.square).each(function(index) {
     var $front = $(document.createElement('div')).addClass('front');
     var $back = $(document.createElement('div')).addClass('back');
-    var $card = $(document.createElement('div')).addClass('square');
-    $('.square').append($front, $back);
-    $board.append($card);
+    $square.append($front, $back);
   });
 };
-
-$('.back').flip({
-  axis: 'y',
-  trigger: 'click'
-});
 
 $(start);
 //
