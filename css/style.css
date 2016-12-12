@@ -1,5 +1,5 @@
 body {
-  background-color: blue;
+  background-color: #f0f0f0;
   text-align: center;
 }
 
@@ -10,22 +10,66 @@ img {
 }
 
 .board {
+  margin: 0 auto;
   width: 600px;
   height: 600px;
-  border: 1px solid #fff;
-  float: right;
-  /*margin: 0 auto;*/
+  position: relative;
+  border: 1px solid black;
+  -webkit-perspective: 800px;
+  -moz-perspective: 800px;
+  -o-perspective: 800px;
+  perspective: 800px;
 }
 
-.square {
-  width: 96px;
-  height: 96px;
-  border: 1px solid #fff;
+.card {
+  box-sizing: border-box;
+  width: 100px;
+  height: 100px;
+  border: 1px solid black;
   float: left;
-  margin: 1px;
-
+  -webkit-transition: -webkit-transform 1s;
+  -moz-transition: -moz-transform 1s;
+  -o-transition: -o-transform 1s;
+  transition: transform 1s;
+  -webkit-transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
+  -o-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  -webkit-transform-origin: 50% 50%;
 }
 
-.front .back {
+.card div {
+  display: block;
+  height: 100%;
+  width: 100%;
+  line-height: 260px;
+  color: white;
+  text-align: center;
+  font-weight: bold;
+  font-size: 140px;
+  position: absolute;
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  -o-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
 
+.card .front {
+  background: grey;
+}
+
+.card .back {
+  background: white;
+  background-size: 100%;
+  -webkit-transform: rotateY(180deg);
+  -moz-transform: rotateY(180deg);
+  -o-transform: rotateY(180deg);
+  transform: rotateY(180deg);
+}
+
+.card .flipped {
+  -webkit-transform: rotateY(180deg);
+  -moz-transform: rotateY(180deg);
+  -o-transform: rotateY(180deg);
+  transform: rotateY(180deg);
 }
