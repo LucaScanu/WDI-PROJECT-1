@@ -58,16 +58,18 @@ Game.selectCard = function selectCard() {
   if (!Game.twoCardsChosen()) {
     // Only one card has been clicked
     return false;
+    // Check for a match
   } else if (Game.twoCardsChosen() && Game.compareCards()) {
+    // this function will make the paired cards disappear
     Game.chosenCards.forEach(function(chosenCard) {
       setTimeout(function(){
         chosenCard.empty('slow');
       }, 1000);
     });
-    // Check for a match
-    //Play sounds
-    // var audio = new Audio('./sounds/' + image + '.wav');
+    // Play sounds
+    // var audio = new Audio('./sounds/doh1.');
     // audio.play();
+
     Game.chosenCards = [];
 
   } else {
@@ -79,6 +81,9 @@ Game.selectCard = function selectCard() {
         // Re-adding the click eventHandler
         chosenCard.on('click', Game.selectCard);
       }, 1500);
+      // Play sounds
+      // var audio = new Audio('./sounds/doh1.wav');
+      // audio.play();
     });
     Game.chosenCards = [];
   }
@@ -88,7 +93,7 @@ Game.dealCards = function dealCards() {
   var i = 0;
   for (i; i < this.deck.length; i++) {
     var $card = $('<div class="card"><div class="front"></div><div class="back"></div></div>');
-    
+
     this.$board.append($card);
   }
   // Select all of the cards that we added to the board
