@@ -1,5 +1,11 @@
 // created the Game object
 
+$(document).ready(function(){
+  $('span').click(function(){
+    $('p').toggle(1000);
+  });
+});
+
 var Game = Game || {};
 
 Game.cardImages = [
@@ -24,6 +30,7 @@ Game.cardImages = [
 ];
 
 Game.chosenCards = [];
+
 
 Game.twoCardsChosen = function twoCardsChosen() {
   return Game.chosenCards.length === 2;
