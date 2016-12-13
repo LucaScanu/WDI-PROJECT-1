@@ -44,12 +44,14 @@ Game.selectCard = function selectCard() {
 
   // Find the index of that card from the cardsArray
   var indexOfSquare = Game.cardsArray.indexOf(this);
+
   // Choose the corresponding image from this.deck using the same index
   var image         = Game.deck[indexOfSquare];
-  // Add the image to the .back of the card that we chose
+  console.log(indexOfSquare);
+  // Add the image to the '.back' of the card that we chose
   var imageUrl      = './images/' + image + '.jpeg';
   card.children('.back').css('background-image', 'url("'+imageUrl+'")');
-  console.log(imageUrl);
+  console.log('url("'+imageUrl+'")');
   // Flip the card
   card.toggleClass('flipped');
   // Remove the eventListener so we can't click on it again
@@ -59,6 +61,11 @@ Game.selectCard = function selectCard() {
     // Only one card has been clicked
     return false;
   } else if (Game.twoCardsChosen() && Game.compareCards()) {
+    // Game.chosenCards.forEach(function(chosenCard) {
+    //   setTimeout(function(){
+    //     chosenCards.fadeOut();
+    //   }, 1500);
+    // });
     // Check for a match
     Game.chosenCards = [];
     return false;

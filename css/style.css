@@ -15,6 +15,7 @@ img {
   height: 600px;
   position: relative;
   border: 1px solid black;
+  border-radius: 8px;
   -webkit-perspective: 800px;
   -moz-perspective: 800px;
   -o-perspective: 800px;
@@ -48,14 +49,16 @@ img {
   font-weight: bold;
   font-size: 140px;
   position: absolute;
+  border-radius: 5px;
   -webkit-backface-visibility: hidden;
   -moz-backface-visibility: hidden;
   -o-backface-visibility: hidden;
   backface-visibility: hidden;
 }
 
-.card .front {
-  background: grey;
+.front {
+  background-size: contain;
+  background-image: url("../images/evil.jpeg");
 }
 
 .card .back {
@@ -72,4 +75,8 @@ img {
   -moz-transform: rotateY(180deg);
   -o-transform: rotateY(180deg);
   transform: rotateY(180deg);
+}
+
+.card .removed {
+  opacity: 0;
 }

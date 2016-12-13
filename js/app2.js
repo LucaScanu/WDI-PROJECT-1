@@ -49,9 +49,9 @@ Game.selectCard = function selectCard() {
   // Add the image to the .back of the card that we chose
   var imageUrl      = './images/' + image + '.jpeg';
   card.children('.back').css('background-image', 'url("'+imageUrl+'")');
-  console.log(imageUrl);
+  console.log('url("'+imageUrl+'")');
   // Flip the card
-  card.toggleClass('flipped');
+  card.toggleClass('.flipped');
   // Remove the eventListener so we can't click on it again
   card.off('click', this.selectCard);
 
@@ -59,14 +59,15 @@ Game.selectCard = function selectCard() {
     // Only one card has been clicked
     return false;
   } else if (Game.twoCardsChosen() && Game.compareCards()) {
+    chosenCard.css('opacity', 0);
     // Check for a match
     Game.chosenCards = [];
-    return false;
+    // return false;
   } else {
     // No match
     Game.chosenCards.forEach(function(chosenCard) {
       setTimeout(function(){
-        chosenCard.toggleClass('flipped');
+        chosenCard.toggleClass('.flipped');
         chosenCard.css('background-image', 'none');
         // Re-adding the click eventHandler
         chosenCard.on('click', Game.selectCard);
