@@ -59,9 +59,17 @@ Game.selectCard = function selectCard() {
     // Only one card has been clicked
     return false;
   } else if (Game.twoCardsChosen() && Game.compareCards()) {
+    Game.chosenCards.forEach(function(chosenCard) {
+      setTimeout(function(){
+        chosenCard.empty('slow');
+      }, 1000);
+    });
     // Check for a match
+    //Play sounds
+    // var audio = new Audio('./sounds/' + image + '.wav');
+    // audio.play();
     Game.chosenCards = [];
-    return false;
+
   } else {
     // No match
     Game.chosenCards.forEach(function(chosenCard) {
@@ -80,6 +88,7 @@ Game.dealCards = function dealCards() {
   var i = 0;
   for (i; i < this.deck.length; i++) {
     var $card = $('<div class="card"><div class="front"></div><div class="back"></div></div>');
+    
     this.$board.append($card);
   }
   // Select all of the cards that we added to the board

@@ -1,6 +1,23 @@
 body {
-  background-color: #f0f0f0;
+  background-image:url("../images/background2.jpeg");
+  background-repeat: no-repeat;
+  background-size: cover;
   text-align: center;
+}
+header {
+  display:block;
+  position:relative;
+  z-index:2;
+  margin-top:-20px;
+  margin-bottom:20px;
+  height:60px;
+}
+
+h1 {
+  font-family: 'Arbutus', cursive;
+  font-size: 2em;
+  /*letter-spacing: 2em;*/
+  color: white;
 }
 
 img {
@@ -14,7 +31,7 @@ img {
   width: 600px;
   height: 600px;
   position: relative;
-  border: 1px solid black;
+  /*border: 1px solid black;*/
   border-radius: 8px;
   -webkit-perspective: 800px;
   -moz-perspective: 800px;
@@ -22,11 +39,14 @@ img {
   perspective: 800px;
 }
 
+.card .removed {
+  opacity: 0;
+}
+
 .card {
   box-sizing: border-box;
   width: 100px;
   height: 100px;
-  border: 1px solid black;
   float: left;
   -webkit-transition: -webkit-transform 1s;
   -moz-transition: -moz-transform 1s;
@@ -43,40 +63,33 @@ img {
   display: block;
   height: 100%;
   width: 100%;
-  line-height: 260px;
+  line-height: 100px;
   color: white;
   text-align: center;
   font-weight: bold;
-  font-size: 140px;
+  font-size: 30px;
   position: absolute;
-  border-radius: 5px;
   -webkit-backface-visibility: hidden;
   -moz-backface-visibility: hidden;
   -o-backface-visibility: hidden;
   backface-visibility: hidden;
 }
 
-.front {
+.card .front {
   background-size: contain;
   background-image: url("../images/evil.jpeg");
 }
 
 .card .back {
-  background: white;
   background-size: 100%;
-  -webkit-transform: rotateY(180deg);
-  -moz-transform: rotateY(180deg);
-  -o-transform: rotateY(180deg);
-  transform: rotateY(180deg);
+  -webkit-transform: rotateY( 180deg );
+  -moz-transform: rotateY( 180deg );
+  -o-transform: rotateY( 180deg );
+  transform: rotateY( 180deg );
 }
-
-.card .flipped {
-  -webkit-transform: rotateY(180deg);
-  -moz-transform: rotateY(180deg);
-  -o-transform: rotateY(180deg);
-  transform: rotateY(180deg);
-}
-
-.card .removed {
-  opacity: 0;
+.card.flipped {
+  -webkit-transform: rotateY( 180deg );
+  -moz-transform: rotateY( 180deg );
+  -o-transform: rotateY( 180deg );
+  transform: rotateY( 180deg );
 }
