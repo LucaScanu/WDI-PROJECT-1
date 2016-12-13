@@ -1,8 +1,8 @@
 // created the Game object
 
 $(document).ready(function(){
-  $('span').click(function(){
-    $('p').toggle(1000);
+  $('#inst').click(function(){
+    $('p').slideToggle(1200);
   });
 });
 
