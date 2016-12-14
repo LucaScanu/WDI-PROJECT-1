@@ -127,3 +127,7 @@ a:hover {
   font-family: 'Oswald', sans-serif;
   color: #96be13;
 }
+
+.timer {
+  float: right;
+}
