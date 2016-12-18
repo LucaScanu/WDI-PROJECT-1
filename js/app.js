@@ -71,6 +71,7 @@ Game.cardImages = [
 
 Game.chosenCards = [];
 
+
 Game.twoCardsChosen = function twoCardsChosen() {
   return Game.chosenCards.length === 2;
 };
@@ -112,6 +113,11 @@ Game.selectCard = function selectCard() {
       setTimeout(function(){
         chosenCard.empty('slow');
       }, 1000);
+      // This function will play audio once two cards have been paired
+      setTimeout(function(){
+        var audio = new Audio('./losersounds/mmmhh.wav');
+        audio.play();
+      }, 1500);
     });
 
     Game.chosenCards = [];
@@ -125,6 +131,7 @@ Game.selectCard = function selectCard() {
         // Re-adding the click eventHandler
         chosenCard.on('click', Game.selectCard);
       }, 1500);
+
       Game.chosenCards = [];
     });
   }
@@ -158,13 +165,24 @@ Game.shuffle = function shuffle() {
   return array;
 };
 
-Game.start = function start() {
-  this.base   = 6;
-  this.$body  = $('body');
-  this.$board = $('<div class="board"></div>');
+Game.ready        = function ready() {
+  this.base       = 6;
+  this.$body      = $('body');
+  this.$board     = $('<div class="board"></div>');
   this.$body.append(this.$board);
-  this.deck   = this.shuffle();
+  this.deck       = this.shuffle();
+  this.soundBites = this.createSounds();
   this.dealCards();
+};
+// This function will hide the board, add an event listener to the easy level
+// with an ID of easy and will make the board appear once the easy ahs been
+// clicked
+Game.start = function start() {
+  $('#board').hide();
+  $('#easy').on('click', function(){
+    $('#board').fadeIn('slow');
+    Game.ready();
+  });
 };
 
 $(Game.start.bind(Game));
