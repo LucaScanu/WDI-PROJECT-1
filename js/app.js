@@ -171,11 +171,10 @@ Game.ready        = function ready() {
   this.$board     = $('<div class="board"></div>');
   this.$body.append(this.$board);
   this.deck       = this.shuffle();
-  this.soundBites = this.createSounds();
   this.dealCards();
 };
 // This function will hide the board, add an event listener to the easy level
-// with an ID of easy and will make the board appear once the easy ahs been
+// with an ID of easy and will make the board appear once the easy has been
 // clicked
 Game.start = function start() {
   $('#board').hide();
