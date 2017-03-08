@@ -6,7 +6,7 @@ WDI-ldn-24 PROJECT1 <hr>
 
 My first project is a simple card memory game with a 3d flipping effect. To begin with I have created an object oriented Game board which consist of a 6x6 grid. The board is initially hidden as the page loads and the player has the choice to click on the instructions button to find out the rules of the game or the play button to start playing.
 
-<img src="https://thawing-shelf-61387.herokuapp.com/#" width="816" alt="screen shot 2016-12-19 at 08 51 21">
+<img src="/images/readme/homepage.png" width="816" alt="screen shot 2016-12-19 at 08 51 21">
 
 ###How to play
 
