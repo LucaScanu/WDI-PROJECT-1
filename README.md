@@ -1,4 +1,4 @@
-WDI-ldn-24 PROJECT1
+WDI-ldn-24 PROJECT1 <hr>
 My first project
 Technologies used:
 As first project I have created a simple card memory game with a 3d flipping effect and name it Flippit. To begin with I have created an object oriented Game board which consist of a 6x6 grid. The board will be hidden once the page is loaded and the player will have to click on one of the three levels available to start the game and make the board appear
