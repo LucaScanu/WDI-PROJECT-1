@@ -6,11 +6,13 @@ WDI-ldn-24 PROJECT1 <hr>
 
 My first project is a simple card memory game with a 3d flipping effect. To begin with I have created an object oriented Game board which consist of a 6x6 grid. The board is initially hidden as the page loads and the player has the choice to click on the instructions button to find out the rules of the game or the play button to start playing.
 
-<img src="/images/readme/homepage.png" width="816" alt="screen shot 2016-12-19 at 08 51 21">
+<img src="/images/readme/homepage.png" width="816">
 
 ###How to play
 
 The aim of the game is to click on each square of the board to pair the pictures underneath until the board is emptied. If the pictures aren't paired they will turn back for the next turn.
+
+<img src="/images/readme/playaction.png" width="816">
 
 ###jQuery
 I have uploaded 18 pictures into my images folder which I have concatenated into an array to create two pairs of each card. I have then shuffled the cards using the Durstenfeld shuffle algorithm and store them into a deck array.
