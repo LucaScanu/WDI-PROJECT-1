@@ -97,7 +97,6 @@ Game.selectCard = function selectCard() {
   // Add the image to the .back of the card that we chose
   var imageUrl      = './images/' + image + '.jpeg';
   card.children('.back').css('background-image', 'url("'+imageUrl+'")');
-  console.log(imageUrl);
   // Flip the card
   card.toggleClass('flipped');
   // Remove the eventListener so we can't click on it again
@@ -130,6 +129,8 @@ Game.selectCard = function selectCard() {
         chosenCard.css('background-image', 'none');
         // Re-adding the click eventHandler
         chosenCard.on('click', Game.selectCard);
+        var audio = new Audio('./losersounds/doh1.wav');
+        audio.play();
       }, 1500);
 
       Game.chosenCards = [];
@@ -173,9 +174,7 @@ Game.ready        = function ready() {
   this.deck       = this.shuffle();
   this.dealCards();
 };
-// This function will hide the board, add an event listener to the easy level
-// with an ID of easy and will make the board appear once the easy has been
-// clicked
+// This function will hide the board, add an event listener to the //easy level with an ID of easy and will make the board appear once //the easy button has been clicked
 Game.start = function start() {
   $('#board').hide();
   $('#easy').on('click', function(){
